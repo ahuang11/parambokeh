@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8"/>
+  <title>
+   Introduction — ParamBokeh 0.2.1-59-g8501f57 documentation
+  </title>
+  <meta content="Generate Bokeh widgets for Parameterized objects" name="description"/>
+  <meta content="ParamBokeh contributors" name="author"/>
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js">
+  </script>
+  <script>
+   WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="../_static/css/main.css" rel="stylesheet"/>
+  <link href="../_static/nbsite.css" rel="stylesheet"/>
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+  </script>
+  <script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+  </script>
+  <script src="../_static/js/main.js">
+  </script>
+  <script src="../_static/nbsite.js">
+  </script>
+  <script src="../_static/require.js">
+  </script>
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="../_static/favicon.ico" rel="icon" type="image/png"/>
+  <!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://ioam.github.io/parambokeh/user_guide/Introduction.html" rel="canonical"/>
+ </head>
+ <body class="">
+  <header class="navigation">
+   <div class="wrapper">
+    <a class="logo" href="../index.html">
+     <img alt="Logo" src="../_static/param-logo.png"/>
+    </a>
+    <a class="navigation-menu logo-text" href="../index.html">
+     ParamBokeh
+    </a>
+    <a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">
+     Menu
+    </a>
+    <nav>
+     <ul class="navigation-menu show" id="js-navigation-menu">
+      <li class="nav-link">
+       <a href="index.html">
+        User Guide
+       </a>
+      </li>
+      <li class="nav-link">
+       <a href="../FAQ.html">
+        FAQ
+       </a>
+      </li>
+      <li class="nav-link">
+       <a href="../about.html">
+        About
+       </a>
+      </li>
+      <li class="nav-link">
+       <div style="display:inline-block;vertical-align: middle;">
+        <div class="search-bar">
+         <form action="../search.html" method="get" role="search">
+          <input name="q" placeholder="Search" type="search"/>
+          <button type="submit">
+           <img alt="Search Icon" src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png"/>
+          </button>
+         </form>
+        </div>
+       </div>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+  <div class="docs section">
+   <div id="hacketyhackhack">
+    <!-- style="width:20%;margin-right: 100px;"> -->
+    <!--style="display: none;"> style="display:none;"> -->
+    <div class="toc" style="width:15%; margin-right:20px;">
+     <ul class="current">
+      <li class="toctree-l1">
+       <a class="reference internal" href="../index.html">
+        Introduction
+       </a>
+      </li>
+      <li class="toctree-l1 current">
+       <a class="reference internal" href="index.html">
+        User Guide
+       </a>
+       <ul class="current">
+        <li class="toctree-l2 current">
+         <a class="current reference internal" href="#">
+          Introduction
+         </a>
+        </li>
+        <li class="toctree-l2">
+         <a class="reference internal" href="View_Parameters.html">
+          View Parameters
+         </a>
+        </li>
+       </ul>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="../FAQ.html">
+        FAQ
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="../about.html">
+        About
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="content">
+    <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+    <div class="section" id="introduction">
+     <h1>
+      Introduction
+      <a class="headerlink" href="#introduction" title="Permalink to this headline">
+       ¶
+      </a>
+     </h1>
+     <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+       <div class="text_cell_render border-box-sizing rendered_html">
+        <p>
+         paramBokeh is a small library that represents Parameters graphically in a notebook and on bokeh server. Parameters are Python attributes extended using the
+         <a href="https://github.com/ioam/param">
+          Param library
+         </a>
+         to support types, ranges, and documentation, which turns out to be just the information you need to automatically create widgets for each parameter.  paramBokeh currently uses bokeh to display the widgets, but the design of Param and paramBokeh allows your code to be completely independent of the underlying widgets library, and can also be used with other widget frameworks such as paramNB, which uses ipywidgets.
+        </p>
+        <h1 id="Parameters-and-widgets">
+         Parameters and widgets
+         <a class="anchor-link" href="#Parameters-and-widgets">
+          ¶
+         </a>
+        </h1>
+        <p>
+         To use paramBokeh, first declare some Parameterized classes with various Parameters:
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [1]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="kn">import</span> <span class="nn">param</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+    
+<span class="k">class</span> <span class="nc">BaseClass</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+    <span class="n">x</span>                       <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">3.14</span><span class="p">,</span><span class="n">doc</span><span class="o">=</span><span class="s2">"X position"</span><span class="p">)</span>
+    <span class="n">y</span>                       <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"Not editable"</span><span class="p">,</span><span class="n">constant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">string_value</span>            <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"str"</span><span class="p">,</span><span class="n">doc</span><span class="o">=</span><span class="s2">"A string"</span><span class="p">)</span>
+    <span class="n">num_int</span>                 <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">100000</span><span class="p">))</span>
+    <span class="n">unbounded_int</span>           <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+    <span class="n">float_with_hard_bounds</span>  <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">8.2</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">float_with_soft_bounds</span>  <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span><span class="n">softbounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">unbounded_float</span>         <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">30.01</span><span class="p">,</span><span class="n">precedence</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">hidden_parameter</span>        <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">2.718</span><span class="p">,</span><span class="n">precedence</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">integer_range</span>           <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">float_range</span>             <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.57</span><span class="p">),</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.145</span><span class="p">))</span>
+    <span class="n">dictionary</span>              <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{</span><span class="s2">"a"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span><span class="mi">9</span><span class="p">})</span>
+    
+<span class="k">class</span> <span class="nc">Example</span><span class="p">(</span><span class="n">BaseClass</span><span class="p">):</span>
+    <span class="sd">"""An example Parameterized class"""</span>
+    <span class="n">boolean</span>                 <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"A sample Boolean parameter"</span><span class="p">)</span>
+    <span class="n">color</span>                   <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'#FFFFFF'</span><span class="p">)</span>
+    <span class="n">date</span>                    <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                         <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="n">select_string</span>           <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"yellow"</span><span class="p">,</span><span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span><span class="s2">"yellow"</span><span class="p">,</span><span class="s2">"green"</span><span class="p">])</span>
+    <span class="n">select_fn</span>               <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span><span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span><span class="nb">set</span><span class="p">,</span><span class="nb">dict</span><span class="p">])</span>
+    <span class="n">int_list</span>                <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ListSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span><span class="n">precedence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">single_file</span>             <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">FileSelector</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'../../*/*.py*'</span><span class="p">,</span><span class="n">precedence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">multiple_files</span>          <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">MultiFileSelector</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'../../*/*.py?'</span><span class="p">,</span><span class="n">precedence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1">#msg                     = param.Action(hello, doc="""Print a message.""",precedence=0.7)</span>
+    
+<span class="n">Example</span><span class="o">.</span><span class="n">num_int</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="output_wrapper">
+       <div class="output">
+        <div class="output_area">
+         <div class="prompt output_prompt">
+          Out[1]:
+         </div>
+         <div class="output_text output_subarea output_execute_result">
+          <pre>50000</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+       <div class="text_cell_render border-box-sizing rendered_html">
+        <p>
+         As you can see, declaring Parameters depends only on the separate Param library.  Parameters are a simple idea with some properties that are crucial for helping you create clean, usable code:
+        </p>
+        <ul>
+         <li>
+          The Param library is pure Python with no dependencies, which makes it easy to include in any code without tying it to a particular GUI or widgets library, or even to the Jupyter notebook.
+         </li>
+         <li>
+          Parameter declarations focus on semantic information relevant to your domain, allowing you to avoid polluting your domain-specific code with anything that ties it to a particular way of displaying or interacting with it.
+         </li>
+         <li>
+          Parameters can be defined wherever they make sense in your inheritance hierarchy, allowing you to document, type, and range-limit them once, with all of those properties inherited by any base class.  E.g. parameters work the same here whether they were declared in
+          <code>
+           BaseClass
+          </code>
+          or
+          <code>
+           Example
+          </code>
+          , which makes it easy to provide this metadata once, and avoiding duplicating it throughout the code wherever ranges or types need checking or documentation needs to be stored.
+         </li>
+        </ul>
+        <p>
+         If you then decide to use these Parameterized classes in a notebook environment, you can import paramBokeh and easily display and edit the parameter values as an optional additional step:
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [2]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="kn">import</span> <span class="nn">parambokeh</span>
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="k">import</span> <span class="n">output_notebook</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="output_wrapper">
+       <div class="output">
+        <div class="output_area">
+         <div class="prompt">
+         </div>
+         <div class="output_html rendered_html output_subarea ">
+          <div class="bk-root">
+           <a class="bk-logo bk-logo-small bk-logo-notebook" href="https://bokeh.pydata.org" target="_blank">
+           </a>
+           <span id="0df7af10-d10a-43b8-a4dc-4f29d2a406f9">
+            Loading BokehJS ...
+           </span>
+          </div>
+         </div>
+        </div>
+        <div class="output_area">
+         <div class="prompt">
+         </div>
+         <div id="ee2372d6-23c6-473f-8836-6fe80d64584b">
+         </div>
+         <div class="output_subarea output_javascript ">
+          <script type="text/javascript">
+           var element = $('#ee2372d6-23c6-473f-8836-6fe80d64584b');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof (root._bokeh_onload_callbacks) === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id !== undefined) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var element_id = msg.content.text.trim();
+            Bokeh.index[element_id].model.document.clear();
+            delete Bokeh.index[element_id];
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[0].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[0].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[0]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("0df7af10-d10a-43b8-a4dc-4f29d2a406f9");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) { callback() });
+    }
+    finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.info("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(js_urls, callback) {
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.log("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.log("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = js_urls.length;
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var s = document.createElement('script');
+      s.src = url;
+      s.async = false;
+      s.onreadystatechange = s.onload = function() {
+        root._bokeh_is_loading--;
+        if (root._bokeh_is_loading === 0) {
+          console.log("Bokeh: all BokehJS libraries loaded");
+          run_callbacks()
+        }
+      };
+      s.onerror = function() {
+        console.warn("failed to load library " + url);
+      };
+      console.log("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.getElementsByTagName("head")[0].appendChild(s);
+    }
+  };var element = document.getElementById("0df7af10-d10a-43b8-a4dc-4f29d2a406f9");
+  if (element == null) {
+    console.log("Bokeh: ERROR: autoload.js configured with elementid '0df7af10-d10a-43b8-a4dc-4f29d2a406f9' but no matching script tag was found. ")
+    return false;
+  }
+
+  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-0.12.11.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.11.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.11.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-0.12.11.min.js"];
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    
+    function(Bokeh) {
+      
+    },
+    function(Bokeh) {
+      console.log("Bokeh: injecting CSS: https://cdn.pydata.org/bokeh/release/bokeh-0.12.11.min.css");
+      Bokeh.embed.inject_css("https://cdn.pydata.org/bokeh/release/bokeh-0.12.11.min.css");
+      console.log("Bokeh: injecting CSS: https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.11.min.css");
+      Bokeh.embed.inject_css("https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.11.min.css");
+      console.log("Bokeh: injecting CSS: https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.11.min.css");
+      Bokeh.embed.inject_css("https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.11.min.css");
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("0df7af10-d10a-43b8-a4dc-4f29d2a406f9")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.log("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(js_urls, function() {
+      console.log("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+          </script>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [3]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="n">widgets</span> <span class="o">=</span> <span class="n">parambokeh</span><span class="o">.</span><span class="n">Widgets</span><span class="p">(</span><span class="n">BaseClass</span><span class="p">)</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="output_wrapper">
+       <div class="output">
+        <div class="output_area">
+         <div class="prompt">
+         </div>
+         <div class="output_html rendered_html output_subarea ">
+          <div class="bk-root">
+           <div class="bk-plotdiv" id="85c52d9f-db5c-43bd-aaa8-f9837fee33bb">
+           </div>
+          </div>
+          <script type="application/javascript">
+           (function(root) {
+  function embed_document(root) {
+    var docs_json = {"aecc6771-1008-4d85-8af2-a0fde597d6ad":{"roots":{"references":[{"attributes":{"code":"data = {p_name: 'unbounded_float', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"33104254-9f81-403f-bfa1-eaa1dea0927e","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"33104254-9f81-403f-bfa1-eaa1dea0927e","type":"CustomJS"}]},"title":"unbounded_float","value":"30.01"},"id":"62b44777-0858-4d2e-ba20-ffd2e7b66fd8","type":"TextInput"},{"attributes":{"text":"<b>BaseClass</b>"},"id":"5d7d200b-e2c1-4e50-97b2-393555db738d","type":"Div"},{"attributes":{"code":"data = {p_name: 'num_int', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"5235b4a2-8b30-4975-9e20-df00a1bfc28d","type":"CustomJS"},{"attributes":{"callback":null,"end":100000,"js_property_callbacks":{"change:value":[{"id":"5235b4a2-8b30-4975-9e20-df00a1bfc28d","type":"CustomJS"}]},"start":-200,"title":"num_int","value":50000},"id":"660d1d38-12b0-4846-bdfd-9bbd6827deb2","type":"Slider"},{"attributes":{"children":[{"id":"5d7d200b-e2c1-4e50-97b2-393555db738d","type":"Div"},{"id":"62b44777-0858-4d2e-ba20-ffd2e7b66fd8","type":"TextInput"},{"id":"b4a84401-fbc3-4b58-bfbd-5e1bd0acbd02","type":"TextInput"},{"id":"1b2c0f9c-ca76-49a0-98c8-9f47ff2da6b9","type":"RangeSlider"},{"id":"38e2d1ac-0298-4c9b-9241-8a65c35cd204","type":"Slider"},{"id":"c4c7ca0d-9053-48fc-a524-943912ae3a7b","type":"Slider"},{"id":"a60c0fc2-728b-4914-bb28-74fcb9eaf68b","type":"RangeSlider"},{"id":"660d1d38-12b0-4846-bdfd-9bbd6827deb2","type":"Slider"},{"id":"841ee61a-64d4-498d-800c-132659b0c4b4","type":"TextInput"},{"id":"f8379c78-79bf-4162-a8c5-7173b3fad766","type":"TextInput"},{"id":"08f56bbd-f790-4f3a-aa5b-358c9e34dced","type":"TextInput"},{"id":"3d475eee-0d52-4bff-a09b-d9f9ca493500","type":"Div"}],"width":300},"id":"aa46a453-79c3-4485-926a-2e0156b1b3cb","type":"WidgetBox"},{"attributes":{"code":"data = {p_name: 'integer_range', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"09680223-bda1-43b6-ba49-7c758b73c9ef","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"7b4586b0-3ea1-43dc-8bec-0abbfb99c0d2","type":"CustomJS"}]},"title":"x","value":"3.14"},"id":"08f56bbd-f790-4f3a-aa5b-358c9e34dced","type":"TextInput"},{"attributes":{"callback":null,"end":10,"js_property_callbacks":{"change:value":[{"id":"09680223-bda1-43b6-ba49-7c758b73c9ef","type":"CustomJS"}]},"start":0,"title":"integer_range","value":[3,7]},"id":"a60c0fc2-728b-4914-bb28-74fcb9eaf68b","type":"RangeSlider"},{"attributes":{"code":"data = {p_name: 'float_with_soft_bounds', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"608117ab-901e-4e2b-b50b-ffe45ee619f6","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'unbounded_int', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"515f07fd-f17b-4aa4-8597-a1afd4cef197","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"515f07fd-f17b-4aa4-8597-a1afd4cef197","type":"CustomJS"}]},"title":"unbounded_int","value":"23"},"id":"f8379c78-79bf-4162-a8c5-7173b3fad766","type":"TextInput"},{"attributes":{"callback":null,"end":2,"format":"0[.]0","js_property_callbacks":{"change:value":[{"id":"608117ab-901e-4e2b-b50b-ffe45ee619f6","type":"CustomJS"}]},"start":0,"step":0.1,"title":"float_with_soft_bounds","value":0.5},"id":"c4c7ca0d-9053-48fc-a524-943912ae3a7b","type":"Slider"},{"attributes":{"code":"data = {p_name: 'x', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"7b4586b0-3ea1-43dc-8bec-0abbfb99c0d2","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'float_with_hard_bounds', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"b93680f3-98a0-439d-921e-82d9182561b2","type":"CustomJS"},{"attributes":{"text":"<b>y</b>: Not editable"},"id":"3d475eee-0d52-4bff-a09b-d9f9ca493500","type":"Div"},{"attributes":{"callback":null,"end":10,"format":"0[.]0","js_property_callbacks":{"change:value":[{"id":"b93680f3-98a0-439d-921e-82d9182561b2","type":"CustomJS"}]},"start":7.5,"step":0.1,"title":"float_with_hard_bounds","value":8.2},"id":"38e2d1ac-0298-4c9b-9241-8a65c35cd204","type":"Slider"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"6b9ff852-c187-42a4-9a31-e554894be43a","type":"CustomJS"}]},"title":"string_value","value":"str"},"id":"841ee61a-64d4-498d-800c-132659b0c4b4","type":"TextInput"},{"attributes":{"code":"data = {p_name: 'float_range', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"6681a271-5f35-4d0b-9a66-1fbbfc299462","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'string_value', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"6b9ff852-c187-42a4-9a31-e554894be43a","type":"CustomJS"},{"attributes":{"callback":null,"end":3.145,"js_property_callbacks":{"change:value":[{"id":"6681a271-5f35-4d0b-9a66-1fbbfc299462","type":"CustomJS"}]},"start":0,"title":"float_range","value":[0,1.57]},"id":"1b2c0f9c-ca76-49a0-98c8-9f47ff2da6b9","type":"RangeSlider"},{"attributes":{"code":"data = {p_name: 'dictionary', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"07d048b9383b40728b075b4d49f610b1\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n        Bokeh.comms[\"07d048b9383b40728b075b4d49f610b1\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"07d048b9383b40728b075b4d49f610b1\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"07d048b9383b40728b075b4d49f610b1\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"d1461ce2-5092-46cb-9728-8a21b6a0cf6a","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"d1461ce2-5092-46cb-9728-8a21b6a0cf6a","type":"CustomJS"}]},"title":"dictionary","value":"{'a': 2, 'b': 9}"},"id":"b4a84401-fbc3-4b58-bfbd-5e1bd0acbd02","type":"TextInput"}],"root_ids":["aa46a453-79c3-4485-926a-2e0156b1b3cb"]},"title":"Bokeh Application","version":"0.12.11"}};
+    var render_items = [{"docid":"aecc6771-1008-4d85-8af2-a0fde597d6ad","elementid":"85c52d9f-db5c-43bd-aaa8-f9837fee33bb","modelid":"aa46a453-79c3-4485-926a-2e0156b1b3cb","notebook_comms_target":"698912810b454d02807b4d6d4208d4ca"}];
+    root.Bokeh.embed.embed_items(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to embed document because BokehJS library is missing")
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+          </script>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [4]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="n">parambokeh</span><span class="o">.</span><span class="n">Widgets</span><span class="p">(</span><span class="n">Example</span><span class="p">)</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="output_wrapper">
+       <div class="output">
+        <div class="output_area">
+         <div class="prompt">
+         </div>
+         <div class="output_html rendered_html output_subarea ">
+          <div class="bk-root">
+           <div class="bk-plotdiv" id="9da2840b-1772-417d-b5eb-86e75a69c4b7">
+           </div>
+          </div>
+          <script type="application/javascript">
+           (function(root) {
+  function embed_document(root) {
+    var docs_json = {"a6026dc2-30c9-48fe-b814-9855c69dfa3b":{"roots":{"references":[{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"74bae133-dddc-4ebd-8743-4e6e92e55f91","type":"CustomJS"}]},"options":[["red","red"],["yellow","yellow"],["green","green"]],"title":"select_string","value":"yellow"},"id":"f47cc5f0-f9ae-4b95-b424-854df081e090","type":"Select"},{"attributes":{"text":"<b>Example</b>"},"id":"2d6e704c-bef5-4925-9d25-748ce78a429f","type":"Div"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"3d0c7484-0ffd-4eaf-9327-3538756298b0","type":"CustomJS"}]},"title":"unbounded_int","value":"23"},"id":"487d5e1a-19cc-47f9-b613-0d98bf29b531","type":"TextInput"},{"attributes":{"code":"data = {p_name: 'select_string', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"74bae133-dddc-4ebd-8743-4e6e92e55f91","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'select_fn', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"1d9f5b08-cdf9-481c-b7a3-67fa29b15300","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"a6e659a4-9773-453e-9d27-f0ee7f27ab08","type":"CustomJS"}]},"title":"string_value","value":"str"},"id":"7a55578c-a405-4b01-b446-86c7376edbed","type":"TextInput"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"1d9f5b08-cdf9-481c-b7a3-67fa29b15300","type":"CustomJS"}]},"options":[["list","list"],["set","set"],["dict","dict"]],"title":"select_fn","value":"list"},"id":"2ecb93e9-ea16-4276-a953-a8d62173bab9","type":"Select"},{"attributes":{"code":"data = {p_name: 'string_value', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"a6e659a4-9773-453e-9d27-f0ee7f27ab08","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"08cf1b3d-2eb0-4cb5-8a1b-fee5781caa4a","type":"CustomJS"}]},"title":"x","value":"3.14"},"id":"fcb4111c-b024-444d-9a6d-bb9774983a3b","type":"TextInput"},{"attributes":{"code":"data = {p_name: 'unbounded_int', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"3d0c7484-0ffd-4eaf-9327-3538756298b0","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'boolean', value: cb_obj['active']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"e42fdd30-9774-4e45-b4c4-3d53bd73c01a","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'x', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"08cf1b3d-2eb0-4cb5-8a1b-fee5781caa4a","type":"CustomJS"},{"attributes":{"text":"<b>y</b>: Not editable"},"id":"d3a42375-f929-4e30-a256-a215868d9f47","type":"Div"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"5814adaf-e057-4837-b29e-c1baa5d93a64","type":"CustomJS"}]},"title":"unbounded_float","value":"30.01"},"id":"5475f12e-46d9-41c7-87bf-c89a00a5e208","type":"TextInput"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"d0ad49e2-9df6-4c26-ba7c-653ab0f17ccc","type":"CustomJS"}]},"options":[["1","1"],["3","3"],["5","5"],["7","7"],["9","9"]],"title":"int_list","value":["3","5"]},"id":"f7a5bbcb-c199-489a-a4f0-79afdf7880f5","type":"MultiSelect"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"03e5413f-ad0b-4004-a66b-5aba0886c882","type":"CustomJS"}]},"title":"color","value":"#FFFFFF"},"id":"932f8211-3e62-44eb-9bc5-d5d54faf4248","type":"TextInput"},{"attributes":{"active":true,"callback":null,"icon":null,"js_property_callbacks":{"change:active":[{"id":"e42fdd30-9774-4e45-b4c4-3d53bd73c01a","type":"CustomJS"}]},"label":"boolean"},"id":"808c1483-31d8-42e8-ae38-374bdc79e245","type":"Toggle"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"cfcb1f02-4188-48d2-90d4-778d87abe223","type":"CustomJS"}]},"max_date":1485907200000.0,"min_date":1483228800000.0,"title":"date","value":1483228800000.0},"id":"87c3bf8d-b927-495e-b61c-f661433e60f0","type":"DatePicker"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"179cc8ca-e753-4f48-9e27-52b8fdfb37e3","type":"CustomJS"}]},"title":"multiple_files"},"id":"d862ccaa-9c3b-47ec-9dfd-4d57e65db8c3","type":"MultiSelect"},{"attributes":{"code":"data = {p_name: 'unbounded_float', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"5814adaf-e057-4837-b29e-c1baa5d93a64","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'int_list', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"d0ad49e2-9df6-4c26-ba7c-653ab0f17ccc","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'date', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"cfcb1f02-4188-48d2-90d4-778d87abe223","type":"CustomJS"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"8b61ba16-121b-4023-b0cd-b0ebe8a7c261","type":"CustomJS"}]},"options":[["doc/conf.py","doc/conf.py"],["parambokeh/__init__.py","parambokeh/__init__.py"],["parambokeh/comms.py","parambokeh/comms.py"],["parambokeh/util.py","parambokeh/util.py"],["parambokeh/view.py","parambokeh/view.py"],["parambokeh/widgets.py","parambokeh/widgets.py"]],"title":"single_file","value":"doc/conf.py"},"id":"1ade653e-404e-4e91-8e16-3a43c1e03599","type":"Select"},{"attributes":{"callback":null,"js_property_callbacks":{"change:value":[{"id":"c0a1c5b1-ae25-4766-9f40-db3d28bdb027","type":"CustomJS"}]},"title":"dictionary","value":"{'a': 2, 'b': 9}"},"id":"e65196e6-2e5f-4ff6-9e0f-ec29a3618b67","type":"TextInput"},{"attributes":{"code":"data = {p_name: 'multiple_files', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"179cc8ca-e753-4f48-9e27-52b8fdfb37e3","type":"CustomJS"},{"attributes":{"callback":null,"end":3.145,"js_property_callbacks":{"change:value":[{"id":"6d67f257-5480-4fce-9fed-8aea4b46b413","type":"CustomJS"}]},"start":0,"title":"float_range","value":[0,1.57]},"id":"5729d695-92b9-42dc-89f9-6d4c9d540604","type":"RangeSlider"},{"attributes":{"code":"data = {p_name: 'dictionary', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"c0a1c5b1-ae25-4766-9f40-db3d28bdb027","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'single_file', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"8b61ba16-121b-4023-b0cd-b0ebe8a7c261","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'color', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"03e5413f-ad0b-4004-a66b-5aba0886c882","type":"CustomJS"},{"attributes":{"callback":null,"end":100000,"js_property_callbacks":{"change:value":[{"id":"619db07d-67a7-40ef-8c6a-3051c9947fe5","type":"CustomJS"}]},"start":-200,"title":"num_int","value":50000},"id":"8c80d5f3-8b59-44dd-9b2f-0d95034475b5","type":"Slider"},{"attributes":{"code":"data = {p_name: 'float_range', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"6d67f257-5480-4fce-9fed-8aea4b46b413","type":"CustomJS"},{"attributes":{"callback":null,"end":10,"format":"0[.]0","js_property_callbacks":{"change:value":[{"id":"dcb90cb6-d6da-4272-9fab-c9a050a4518e","type":"CustomJS"}]},"start":7.5,"step":0.1,"title":"float_with_hard_bounds","value":8.2},"id":"15e30c01-77ff-4b88-aff8-fc2296233223","type":"Slider"},{"attributes":{"code":"data = {p_name: 'float_with_hard_bounds', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"dcb90cb6-d6da-4272-9fab-c9a050a4518e","type":"CustomJS"},{"attributes":{"callback":null,"end":2,"format":"0[.]0","js_property_callbacks":{"change:value":[{"id":"c5b844f1-bcb0-4372-9bb3-1a25e1034425","type":"CustomJS"}]},"start":0,"step":0.1,"title":"float_with_soft_bounds","value":0.5},"id":"731676bb-a22b-4bdc-834c-573b4b549080","type":"Slider"},{"attributes":{"code":"data = {p_name: 'float_with_soft_bounds', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"c5b844f1-bcb0-4372-9bb3-1a25e1034425","type":"CustomJS"},{"attributes":{"code":"data = {p_name: 'integer_range', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"1337df28-e1b0-4e67-944d-201a11ae1c83","type":"CustomJS"},{"attributes":{"callback":null,"end":10,"js_property_callbacks":{"change:value":[{"id":"1337df28-e1b0-4e67-944d-201a11ae1c83","type":"CustomJS"}]},"start":0,"title":"integer_range","value":[3,7]},"id":"05170f90-819c-407c-ae94-682039a9a405","type":"RangeSlider"},{"attributes":{"code":"data = {p_name: 'num_int', value: cb_obj['value']};\n    function unique_events(events) {\n        // Processes the event queue ignoring duplicate events\n        // of the same type\n        var unique = [];\n        var unique_events = [];\n        for (var i=0; i<events.length; i++) {\n            [event, data] = events[i];\n            if (!unique_events.includes(event)) {\n                unique.unshift(data);\n                unique_events.push(event);\n            }\n        }\n        return unique;\n    }\n\n    function process_events(comm_state) {\n        // Iterates over event queue and sends events via Comm\n        var events = unique_events(comm_state.event_buffer);\n        for (var i=0; i<events.length; i++) {\n            var data = events[i];\n            var comm = Bokeh.comms[data[\"comm_id\"]];\n            comm.send(data);\n        }\n        comm_state.event_buffer = [];\n    }\n\n    function on_msg(msg){\n      // Receives acknowledgement from Python, processing event\n      // and unblocking Comm if event queue empty\n      msg = JSON.parse(msg.content.data);\n      var comm_id = msg[\"comm_id\"]\n      var comm_state = Bokeh.comm_state[comm_id];\n      if (comm_state.event_buffer.length) {\n        process_events(comm_state);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n      } else {\n        comm_state.blocked = false;\n      }\n      comm_state.event_buffer = [];\n      if ((msg.msg_type == \"Ready\") && msg.content) {\n        console.log(\"Python callback returned following output:\", msg.content);\n      } else if (msg.msg_type == \"Error\") {\n        console.log(\"Python failed with the following traceback:\", msg['traceback'])\n      }\n    }\n\n    // Initialize Comm\n    if (Bokeh.comms == null) {\n      Bokeh.comms = {};\n      Bokeh.comm_state = {};\n    }\n\n    if ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null)) {\n      var comm_manager = Jupyter.notebook.kernel.comm_manager;\n      var comm = Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"];\n      if (comm == null) {\n        comm = comm_manager.new_comm(\"fed3f5e23a294729bcbda011f8b8f546\", {}, {}, {});\n        comm.on_msg(on_msg);\n        comm_manager[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n        Bokeh.comms[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm;\n      }\n    } else {\n      return\n    }\n\n    // Initialize event queue and timeouts for Comm\n    var comm_state = Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"];\n    if (comm_state === undefined) {\n        comm_state = {event_buffer: [], blocked: false, time: Date.now()}\n        Bokeh.comm_state[\"fed3f5e23a294729bcbda011f8b8f546\"] = comm_state\n    }\n\n    // Add current event to queue and process queue if not blocked\n    event_name = cb_obj.event_name\n    data['comm_id'] = \"fed3f5e23a294729bcbda011f8b8f546\";\n    timeout = comm_state.time + 20000;\n    if ((window.Jupyter == null) | (Jupyter.notebook.kernel == null)) {\n    } else if ((comm_state.blocked && (Date.now() < timeout))) {\n        comm_state.event_buffer.unshift([event_name, data]);\n    } else {\n        comm_state.event_buffer.unshift([event_name, data]);\n        setTimeout(function() { process_events(comm_state); }, 20);\n        comm_state.blocked = true;\n        comm_state.time = Date.now()+20;\n    }\n"},"id":"619db07d-67a7-40ef-8c6a-3051c9947fe5","type":"CustomJS"},{"attributes":{"children":[{"id":"2d6e704c-bef5-4925-9d25-748ce78a429f","type":"Div"},{"id":"5475f12e-46d9-41c7-87bf-c89a00a5e208","type":"TextInput"},{"id":"808c1483-31d8-42e8-ae38-374bdc79e245","type":"Toggle"},{"id":"932f8211-3e62-44eb-9bc5-d5d54faf4248","type":"TextInput"},{"id":"87c3bf8d-b927-495e-b61c-f661433e60f0","type":"DatePicker"},{"id":"e65196e6-2e5f-4ff6-9e0f-ec29a3618b67","type":"TextInput"},{"id":"5729d695-92b9-42dc-89f9-6d4c9d540604","type":"RangeSlider"},{"id":"15e30c01-77ff-4b88-aff8-fc2296233223","type":"Slider"},{"id":"731676bb-a22b-4bdc-834c-573b4b549080","type":"Slider"},{"id":"05170f90-819c-407c-ae94-682039a9a405","type":"RangeSlider"},{"id":"8c80d5f3-8b59-44dd-9b2f-0d95034475b5","type":"Slider"},{"id":"2ecb93e9-ea16-4276-a953-a8d62173bab9","type":"Select"},{"id":"f47cc5f0-f9ae-4b95-b424-854df081e090","type":"Select"},{"id":"7a55578c-a405-4b01-b446-86c7376edbed","type":"TextInput"},{"id":"487d5e1a-19cc-47f9-b613-0d98bf29b531","type":"TextInput"},{"id":"fcb4111c-b024-444d-9a6d-bb9774983a3b","type":"TextInput"},{"id":"d3a42375-f929-4e30-a256-a215868d9f47","type":"Div"},{"id":"f7a5bbcb-c199-489a-a4f0-79afdf7880f5","type":"MultiSelect"},{"id":"d862ccaa-9c3b-47ec-9dfd-4d57e65db8c3","type":"MultiSelect"},{"id":"1ade653e-404e-4e91-8e16-3a43c1e03599","type":"Select"}],"width":300},"id":"39c193fd-557c-498c-8281-4f06f8198440","type":"WidgetBox"}],"root_ids":["39c193fd-557c-498c-8281-4f06f8198440"]},"title":"Bokeh Application","version":"0.12.11"}};
+    var render_items = [{"docid":"a6026dc2-30c9-48fe-b814-9855c69dfa3b","elementid":"9da2840b-1772-417d-b5eb-86e75a69c4b7","modelid":"39c193fd-557c-498c-8281-4f06f8198440","notebook_comms_target":"c33b3eaba62d4fb8bcb70c4717bed520"}];
+    root.Bokeh.embed.embed_items(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        embed_document(root);
+        clearInterval(timer);
+      }
+      attempts++;
+      if (attempts > 100) {
+        console.log("Bokeh: ERROR: Unable to embed document because BokehJS library is missing")
+        clearInterval(timer);
+      }
+    }, 10, root)
+  }
+})(window);
+          </script>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+       <div class="text_cell_render border-box-sizing rendered_html">
+        <p>
+         As you can see,
+         <code>
+          parambokeh.Widgets()
+         </code>
+         does not need to be provided with any knowledge of your domain-specific application, not even the names of your parameters; it simply displays widgets for whatever Parameters may have been defined on that object.  Using Param with paramBokeh thus achieves a nearly complete separation between your domain-specific code and your display code, making it vastly easier to maintain both of them over time.  Here even the
+         <code>
+          msg
+         </code>
+         button behavior was specified declaratively, as an action that can be invoked (printing "Hello") independently of whether it is used in a GUI or other context.
+        </p>
+        <p>
+         Interacting with the widgets above is only supported on a live Python-backed server, but you can also export static renderings of the widgets to a file or web page.
+        </p>
+        <p>
+         By default, editing values in this way requires you to run the notebook cell by cell -- when you get to the above cell, edit the values as you like, and then move on to execute subsequent cells, where any reference to those parameter values will use your interactively selected setting:
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [5]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="n">Example</span><span class="o">.</span><span class="n">unbounded_int</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="output_wrapper">
+       <div class="output">
+        <div class="output_area">
+         <div class="prompt output_prompt">
+          Out[5]:
+         </div>
+         <div class="output_text output_subarea output_execute_result">
+          <pre>23</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [6]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="n">Example</span><span class="o">.</span><span class="n">num_int</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="output_wrapper">
+       <div class="output">
+        <div class="output_area">
+         <div class="prompt output_prompt">
+          Out[6]:
+         </div>
+         <div class="output_text output_subarea output_execute_result">
+          <pre>50000</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing code_cell rendered">
+      <div class="input">
+       <div class="prompt input_prompt">
+        In [7]:
+       </div>
+       <div class="inner_cell">
+        <div class="input_area">
+         <div class=" highlight hl-ipython3">
+          <pre><span></span><span class="c1">#Example.print_param_defaults() # see all parameter values</span>
+</pre>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+       <div class="text_cell_render border-box-sizing rendered_html">
+        <p>
+         As you can see, you can access the parameter values at the class level from within the notebook to control behavior explicitly, e.g. to select what to show in subsequent cells.  Moreover, any instances of the Parameterized classes in your own code will now use the new parameter values unless specifically overridden in that instance, so you can now import and use your domain-specific library however you like, knowing that it will use your interactive selections wherever those classes appear.  None of the domain-specific code needs to know or care that you used ParamNB; it will simply see new values for whatever attributes were changed interactively.  ParamNB thus allows you to provide notebook-specific, domain-specific interactive functionality without ever tying your domain-specific code to the notebook environment.
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+       <div class="text_cell_render border-box-sizing rendered_html">
+        <p>
+         You can install ParamBokeh as described at
+         <a href="https://github.com/ioam/parambokeh">
+          github.com/ioam/parambokeh
+         </a>
+         .  Have fun widgeting!
+        </p>
+       </div>
+      </div>
+     </div>
+     <hr class="docutils"/>
+     <p>
+      <a class="reference external" href="https://raw.githubusercontent.com/ioam/parambokeh/master/examples/user_guide/Introduction.ipynb">
+       Right click to download this notebook from GitHub.
+      </a>
+     </p>
+    </div>
+   </div>
+  </div>
+  <!-- END MAIN BODY OF DOCS ––––––––––––– -->
+  <footer class="footer">
+   <div class="footer-links">
+    <ul>
+     <li>
+      <span class="footer-title">
+       Links
+      </span>
+     </li>
+     <li>
+      <a href="index.html">
+       User Guide
+      </a>
+     </li>
+     <li>
+      <a href="../FAQ.html">
+       FAQ
+      </a>
+     </li>
+     <li>
+      <a href="../about.html">
+       About
+      </a>
+     </li>
+    </ul>
+    <ul>
+     <li>
+      <span class="footer-title">
+       Join Us
+      </span>
+     </li>
+     <li>
+      <a href="//gitter.im/ioam/holoviews">
+       Gitter
+      </a>
+     </li>
+     <li>
+      <a href="//github.com/ioam/parambokeh">
+       Github
+      </a>
+     </li>
+    </ul>
+    <ul class="copyright">
+     <li>
+      2017 ParamBokeh contributors
+     </li>
+    </ul>
+   </div>
+  </footer>
+  <!-- Google Analytics -->
+  <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61554933-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- MathJax Config -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+  </script>
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ </body>
+</html>
